@@ -97,6 +97,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView{
 
     @Override
     public void showNetError() {
+        //TODO 请检查网络
         Toast.makeText(getActivity(), "网络异常，请检查您的网络", Toast.LENGTH_SHORT).show();
 
     }
