@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:mine="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/img_mine">
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_mine_setting"
+            />
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_msg_white"
+            />
+
+        <FrameLayout
+            android:id="@+id/fl_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/mine_circle"
+            >
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_defaul_avatar"
+                />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fl_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="请登录"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            />
+
+    </RelativeLayout>
+
+    <com.example.tengxunmap.widget.MineListItemView
+        android:id="@+id/item_dingdan"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        mine:icon="@drawable/ic_mine_order"
+        mine:text="订单列表"/>
+
+    <com.example.tengxunmap.widget.MineListItemView
+        android:id="@+id/item_shoucang"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        mine:icon="@drawable/ic_mine_collection"
+        mine:text="收藏店铺"/>
+
+    <com.example.tengxunmap.widget.MineListItemView
+        android:id="@+id/item_youhuiquan"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        mine:icon="@drawable/ic_mine_coupon"
+        mine:text="优惠券"/>
+
+    <com.example.tengxunmap.widget.MineListItemView
+        android:id="@+id/item_huiyuanka"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        mine:icon="@drawable/ic_mine_vip"
+        mine:text="会员卡"/>
+
+    <com.example.tengxunmap.widget.MineListItemView
+        android:id="@+id/item_ruzhu"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        mine:icon="@drawable/ic_mine_join"
+        mine:text="商家入驻"/>
+
+    <com.example.tengxunmap.widget.MineListItemView
+        android:id="@+id/item_kefu"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        mine:icon="@drawable/ic_mine_call"
+        mine:text="联系客服"/>
+
+</LinearLayout>
