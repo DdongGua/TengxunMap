@@ -57,7 +57,7 @@ public class MainActivity extends FragmentActivity implements MainContract.MainV
     private HomeFragment homeFragment;
     private FragmentManager fm;
     private ActionBar actionBar;
-    private View customActionbar;
+    public View customActionbar;
     public TencentLocation tencentLocation;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -145,7 +145,7 @@ public class MainActivity extends FragmentActivity implements MainContract.MainV
                 } else {
                     ft.show(mineFragment);
                 }
-                ft.commit();
+                ft.commitAllowingStateLoss();
                 actionBar.hide();
             }
             if ("home".equals(name)) {
@@ -156,7 +156,7 @@ public class MainActivity extends FragmentActivity implements MainContract.MainV
                 } else {
                     ft.show(homeFragment);
                 }
-                ft.commit();
+                ft.commitAllowingStateLoss();
                 //在回到首页的时候显示actionbar
                 actionBar.show();
             }

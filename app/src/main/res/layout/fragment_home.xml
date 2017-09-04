@@ -1,67 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.handmark.pulltorefresh.library.PullToRefreshScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                                                            xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="match_parent"
-                                                            android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        >
 
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/slider"
+        <com.example.tengxunmap.widget.CustomScrollView
+            android:id="@+id/ptrsv"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="match_parent">
 
-        <com.daimajia.slider.library.Indicators.PagerIndicator
-            android:id="@+id/indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:selected_color="#f00"
-            app:unselected_color="#000"/>
+        </com.example.tengxunmap.widget.CustomScrollView>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:orientation="vertical"
+            >
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp"
-                android:layout_width="match_parent"
-                android:layout_height="148dp"/>
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/translate"
+                />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_alignParentBottom="true"
-                android:background="#f00"
-                android:gravity="center"
-                android:orientation="horizontal"
-                >
+            <include
+                android:id="@+id/menu_jing"
+                layout="@layout/menu_home"
+                android:visibility="invisible"
+                />
 
-                <ImageView
-                    android:id="@+id/vp1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:background="@drawable/viewpager_selected"
-                    />
+        </LinearLayout>
+    </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/vp2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:background="@drawable/viewpager_normal"
-                    />
-                <!--两个圆点-->
-
-            </LinearLayout>
-        </RelativeLayout>
-
-    </LinearLayout>
-
-</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+</LinearLayout>

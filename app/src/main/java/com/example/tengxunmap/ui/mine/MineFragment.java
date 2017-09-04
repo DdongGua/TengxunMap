@@ -85,7 +85,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener,M
     public void onClick(View view) {
      switch (view.getId()){
          case R.id.fl_icon:
-             if("未登录".equals("未登录")){
+             if("未登录".equals(tv_name.getText().toString().trim())){
                  startActivity(new Intent(getActivity(), LoginActivity.class));
              }
              break;

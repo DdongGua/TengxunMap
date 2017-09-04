@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DaoExample/DaoExample.iml" filepath="$PROJECT_DIR$/DaoExample/DaoExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TengxunMap.iml" filepath="$PROJECT_DIR$/TengxunMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/floatingmenu/floatingmenu.iml" filepath="$PROJECT_DIR$/floatingmenu/floatingmenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" />
+    </modules>
+  </component>
+</project>

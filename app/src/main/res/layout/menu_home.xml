@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:background="#fff"
+              android:gravity="center_vertical"
+              android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="附近店铺"
+        android:textColor="#000"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/tv_zonghe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="综合排序"
+        android:textColor="#666"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_pingfen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="评分最高"
+        android:textColor="#666"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_juli"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="距离最近"
+        android:textColor="#666"
+        android:textSize="12sp"
+        />
+</LinearLayout>
