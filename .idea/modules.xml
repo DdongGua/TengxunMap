@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/floatingmenu/floatingmenu.iml" filepath="$PROJECT_DIR$/floatingmenu/floatingmenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stickynavlayout/stickynavlayout.iml" filepath="$PROJECT_DIR$/stickynavlayout/stickynavlayout.iml" />
     </modules>
   </component>
 </project>

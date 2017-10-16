@@ -12,6 +12,7 @@ import android.view.ViewGroup;
  */
 
 public abstract class BaseFragment extends Fragment{
+    private static final String TAG = "BaseFragment";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public abstract class BaseFragment extends Fragment{
     }
 
     protected abstract void initData();
-    //初始化view,让子类实现
+  //初始化view,让子类实现
     protected abstract View initView(LayoutInflater inflater) ;
       
     

@@ -6,7 +6,13 @@ import com.example.tengxunmap.constant.Constant;
 import com.example.tengxunmap.model.bean.ADBean;
 import com.example.tengxunmap.model.bean.BaseBean;
 import com.example.tengxunmap.model.bean.HomeShopBean;
+import com.example.tengxunmap.model.bean.HomeShopListBean;
 import com.example.tengxunmap.model.bean.LoginBean;
+import com.example.tengxunmap.model.bean.Shanghu;
+import com.example.tengxunmap.model.bean.ShanghuFuwuListBean;
+import com.example.tengxunmap.model.bean.ShanghuFuwuyuangongBean;
+import com.example.tengxunmap.model.bean.ShanghuPinglunBean;
+import com.example.tengxunmap.model.bean.ShanghuUpDetailsBean;
 import com.example.tengxunmap.model.bean.TuijianShopBean;
 
 import retrofit2.http.Field;
@@ -97,5 +103,71 @@ public interface API {
     @GET(Constant.SHOP)
     Observable<BaseBean<TuijianShopBean>> getTuijianSHops(
                    @NonNull @Query("bs") String bs
+    );
+    //http://www.quanminlebang.com/api100/shanghu.php?bs=jingxuanshanghu&openid=104cca5fad614b53e494e5198f4cdb47&paixu=0&zuobiao=116.125586,40.232195&page=1
+    @GET(Constant.SHOP)
+    Observable<BaseBean<HomeShopListBean>>  getHomeListBean(
+                   @NonNull @Query("bs") String bs,
+                   @Query("openid") String openid,
+                   @NonNull @Query("paixu") String paixu,
+                   @NonNull @Query("zuobiao") String zuobiao,
+                   @NonNull @Query("page") String page
+
+    );
+    /**
+     * 访问商户详情的单个条目
+     *
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<Shanghu>>  getShanghuDetail(
+                   @NonNull @Query("bs") String bs,
+                   @Query("openid") String openid,
+                   @NonNull @Query("shanghuid") String shanghuid,
+                   @Query("zuobiao") String zuobiao
+    );
+    /*
+   获取商户详情数据
+    */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuUpDetailsBean>>   getShanghuUpDetail(
+                   @Query("bs") String bs,
+                   @Query("openid") String openid,
+                   @Query("shanghuid") String shanghuid,
+                   @Query("zuobiao") String zuobiao
+    );
+    /**
+     * 获得商户详情中服务项目内容
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuFuwuListBean>> getShanghuFuwuList(
+                   @Query("bs") String bs,
+                   @Query("shanghuid") String shanghuid,
+                   @Query("page") String page
+    );
+    /**
+     * 获得商户服务员工列表
+     * @param bs
+     * @param shanghuid
+     * @param page
+     * @return
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuFuwuyuangongBean>> getShanghuFuwuyuangongList(
+                   @Query("bs") String bs,
+                   @Query("shanghuid") String shanghuid,
+                   @Query("page") String page
+    );
+    /**
+     * 获得商户评论
+     * @param bs
+     * @param shanghuid
+     * @param page
+     * @return
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuPinglunBean>> getShanghuPinglun(
+                   @Query("bs") String bs,
+                   @Query("shanghuid") String shanghuid,
+                   @Query("page") String page
     );
 }

@@ -1,2 +1,2 @@
-include ':app', ':DaoExample', ':floatingmenu'
+include ':app', ':DaoExample', ':floatingmenu', ':stickynavlayout'
 include ':pulltorefresh'

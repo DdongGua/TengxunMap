@@ -33,6 +33,7 @@ import com.example.tengxunmap.ui.login.ChooseLoginActivity;
 import com.example.tengxunmap.ui.mine.MineFragment;
 import com.example.tengxunmap.utils.MeasureUtils;
 import com.example.tengxunmap.utils.SPUtils;
+import com.example.tengxunmap.utils.SignUtils;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.map.geolocation.TencentLocationRequest;
@@ -76,6 +77,16 @@ public class MainActivity extends FragmentActivity implements MainContract.MainV
         EventBus.getDefault().register(this);
         test();
         switch2Fragment("home");
+        initLogin();
+    }
+
+    private void initLogin() {
+        String username="11101110030";
+        String pass="123456";
+        String errornum="0";
+        String checkUser = SignUtils.getSignInfo("checkUser", username, pass, errornum);
+        HttpHelper.getInstance().lybLogin(username,pass,errornum,checkUser);
+
     }
 
     //切换fragment逻辑
@@ -126,6 +137,7 @@ public class MainActivity extends FragmentActivity implements MainContract.MainV
         if (mineFragment != null) {
             ft.hide(mineFragment);
         }
+        //允许状态丢失
         ft.commitAllowingStateLoss();
     }
 

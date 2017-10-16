@@ -32,12 +32,12 @@
         "source": "C:\\Users\\亮亮\\.android\\build-cache\\000888720eac344263c78a6272648c6120802cd4\\output\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "D:\\study\\TengxunMap\\DaoExample\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
-        "source": "C:\\Users\\亮亮\\.android\\build-cache\\000888720eac344263c78a6272648c6120802cd4\\output\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
         "merged": "D:\\study\\TengxunMap\\DaoExample\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_list_longpressed_holo.9.png",
         "source": "C:\\Users\\亮亮\\.android\\build-cache\\000888720eac344263c78a6272648c6120802cd4\\output\\res\\drawable-mdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "D:\\study\\TengxunMap\\DaoExample\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "C:\\Users\\亮亮\\.android\\build-cache\\000888720eac344263c78a6272648c6120802cd4\\output\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "D:\\study\\TengxunMap\\DaoExample\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",

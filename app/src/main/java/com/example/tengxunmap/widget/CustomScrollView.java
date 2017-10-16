@@ -2,12 +2,12 @@ package com.example.tengxunmap.widget;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.Toast;
 
@@ -15,7 +15,8 @@ import android.widget.Toast;
  * Created by 亮亮 on 2017/9/4.
  */
 
-public class CustomScrollView extends ScrollView{
+public class CustomScrollView extends NestedScrollView {
+
 
     private final static int SCROLL_DURATION = 400;
     private final static float OFFSET_RADIO = 1.8f;
@@ -25,17 +26,27 @@ public class CustomScrollView extends ScrollView{
     private int lastY;
     private Scroller scroller = null;
     private OnRefreshScrollViewListener listener = null;
-    private LinearLayout scrollContainer = null;
+    private LinearLayout scrollContainer=null;
     private ScrollViewHeader headerView = null;
+    //接口回调
+    //2.声明一个对象
     ScrollViewListener svl;
+    MScrollViewListener msvl;
+
     public CustomScrollView(Context context) {
         super(context);
         if (!isInEditMode()) {
             initView(context);
         }
     }
+    //接口回调
+    // 1.定义一个接口，让用户去创建，并且实现方法
     public interface  ScrollViewListener{
-        void onscroll(CustomScrollView csv,int l, int t, int oldl, int oldt);
+        void onscroll(CustomScrollView csv,int t);
+    }
+    // 11.定义一个接口，让用户去创建，并且实现方法
+    public interface  MScrollViewListener{
+        void onscroll(CustomScrollView csv,int t);
     }
 
     public CustomScrollView(Context context, AttributeSet attrs) {
@@ -51,15 +62,24 @@ public class CustomScrollView extends ScrollView{
             initView(context);
         }
     }
+    //接口回调
+    //3.定义一个让用户传入接口的方法
+    //用来处理透明度的接口回调
     public void setScrollViewListener(ScrollViewListener listener){
+
         this.svl=listener;
     }
+    public void setMScrollViewListener(MScrollViewListener listener){
+        this.msvl=listener;
+    }
 
+    //接口回调
+    //4.让需要调用接口的地方调用接口
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         if(svl!=null){
-            svl.onscroll(this,l,t,oldl,oldt);
+            svl.onscroll(this,t);
         }
     }
 
@@ -242,5 +262,4 @@ public class CustomScrollView extends ScrollView{
     public interface OnRefreshScrollViewListener {
         public void onRefresh();
     }
-
 }

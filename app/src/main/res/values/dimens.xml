@@ -43,6 +43,12 @@
 
     <dimen name="ad_icon_size">6dp</dimen>
     <dimen name="home_collection">192dp</dimen>
+    <dimen name="menuheight">40dp</dimen>
+    <dimen name="item_homeshop">120dp</dimen>
+    <dimen name="scrollheaderheight">80dp</dimen>
     <dimen name="viewpagerheight">148dp</dimen>
     <dimen name="viewpagerheightplus">180dp</dimen>
+    <dimen name="viewpagermargin">10dp</dimen>
+    <dimen name="sliderhight">200dp</dimen>
+    <dimen name="rg_height">60dp</dimen>
 </resources>
