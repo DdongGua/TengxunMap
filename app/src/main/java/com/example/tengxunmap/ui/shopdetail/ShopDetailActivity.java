@@ -17,12 +17,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.tengxunmap.R;
+import com.example.tengxunmap.adapter.ShopDetailBelowAdapter;
 import com.example.tengxunmap.adapter.ShopDetailViewPagerAdaper;
 import com.example.tengxunmap.constant.Constant;
+import com.example.tengxunmap.httputil.HttpHelper;
 import com.example.tengxunmap.model.bean.ShanghuFuwuListBean;
 import com.example.tengxunmap.model.bean.ShanghuFuwuyuangongBean;
 import com.example.tengxunmap.model.bean.ShanghuPinglunBean;
 import com.example.tengxunmap.model.bean.ShanghuUpDetailsBean;
+import com.example.tengxunmap.model.bean.ShopCommentBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -60,6 +63,10 @@ public class ShopDetailActivity extends Activity implements ShopDetailContract.V
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     private ShopDetailContract.presenter presenter;
+    private ArrayList<View> recyclerViews;
+    private int zongtiaoshu;
+    private String[] tabNames;
+    private String shanghuid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,27 +87,34 @@ public class ShopDetailActivity extends Activity implements ShopDetailContract.V
 
     private void initVpData() {
         initBelowItemList();
-
-        ArrayList<ImageView> lists = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setBackgroundResource(R.mipmap.ic_launcher);
-            lists.add(imageView);
-        }
-        ShopDetailViewPagerAdaper adaper = new ShopDetailViewPagerAdaper(lists);
-        vp.setAdapter(adaper);
-        bindTab2Vp(tablayout, vp);
     }
 
     //初始化本页面下方的list
     void initBelowItemList() {
+        recyclerViews = new ArrayList<>();
+    }
+
+    //创建recyclerview,根据list是否为空，控制界面的显示
+    private void createList(ArrayList list, int itemlayout) {
         LayoutInflater inflater = LayoutInflater.from(this);
-        View v = inflater.inflate(R.layout.shopdetaillist, null, false);
-        ButterKnife.bind(this,v);
-        LinearLayoutManager lmanager = new LinearLayoutManager(this);
-        recyclerview.setLayoutManager(lmanager);
+        View v = inflater.inflate(itemlayout, null, false);
+        ImageView ic_empty = (ImageView) v.findViewById(R.id.ic_empty);
+        recyclerview = (RecyclerView) v.findViewById(R.id.recyclerview);
+        //如果list是空的就展示空的页面
+        if (list == null || list.isEmpty()) {
+            ic_empty.setVisibility(View.VISIBLE);  //显示数据为空图片
+            recyclerview.setVisibility(View.INVISIBLE);   //隐藏list
+        } else {
+            LinearLayoutManager lmanager = new LinearLayoutManager(this);
+            recyclerview.setLayoutManager(lmanager);
+            ShopDetailBelowAdapter shopDetailBelowAdapter = new ShopDetailBelowAdapter(list, this);
+            recyclerview.setAdapter(shopDetailBelowAdapter);
 
-
+            ic_empty.setVisibility(View.INVISIBLE);
+            recyclerview.setVisibility(View.VISIBLE);
+        }
+//        recyclerview.setNestedScrollingEnabled(true);
+        recyclerViews.add(v);
     }
 
     @Override
@@ -143,6 +157,13 @@ public class ShopDetailActivity extends Activity implements ShopDetailContract.V
 
     }
 
+    //设置tablayout的信息
+    @Override
+    public void setTabLayoutTabs(int commentNum) {
+        tabNames = new String[]{"服务列表", "服务人员", "评论（" + commentNum + "）"};
+
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void setContent(ShanghuUpDetailsBean bean) {
         //TODO 处理数据
@@ -156,11 +177,24 @@ public class ShopDetailActivity extends Activity implements ShopDetailContract.V
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void setFuwuyuangongList(ShanghuFuwuyuangongBean bean) {
-
+        ArrayList<ShanghuFuwuyuangongBean.ListBean> list = (ArrayList<ShanghuFuwuyuangongBean.ListBean>) bean.getList();
+        //需要判断数据是否为空
+        createList(list, R.layout.shopdetaillist);
+        //通过eventbus 完成三个访问根据链式结构进行访问
+        HttpHelper.getInstance().getShanghuFuwuyuangong(shanghuid);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void setPinglunList(ShanghuPinglunBean bean) {
+    public void setPinglunList(ShopCommentBean bean) {
+        zongtiaoshu = bean.getZongtiaoshu();
+        setTabLayoutTabs(zongtiaoshu); //设置tablayout上方的名称
+        //首先访问的是评论列表
+        ArrayList<ShopCommentBean.Comment> list = bean.getList();
+        createList(list, R.layout.shopdetaillist);
+        //这是最后一次请求网络的回调，我们需要在这去设置viewpager的适配器
+        ShopDetailViewPagerAdaper adaper = new ShopDetailViewPagerAdaper(recyclerViews, tabNames);
+        vp.setAdapter(adaper);
+        bindTab2Vp(tablayout, vp);
 
     }
 

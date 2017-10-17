@@ -22,6 +22,7 @@ import com.example.tengxunmap.model.bean.ShanghuFuwuListBean;
 import com.example.tengxunmap.model.bean.ShanghuFuwuyuangongBean;
 import com.example.tengxunmap.model.bean.ShanghuPinglunBean;
 import com.example.tengxunmap.model.bean.ShanghuUpDetailsBean;
+import com.example.tengxunmap.model.bean.ShopCommentBean;
 import com.example.tengxunmap.model.bean.TuijianShopBean;
 import com.example.tengxunmap.model.bean.UserInfoBean;
 import com.example.tengxunmap.model.bean.lybbean.Test;
@@ -348,12 +349,12 @@ public class HttpHelper {
      * 获得商户评论列表
      */
     public void getShanghuPinglun(String shanghuid) {
-        Observable<BaseBean<ShanghuPinglunBean>> shanghuFuwuList = api.getShanghuPinglun(BSConstant.SHOP_COMMENT, shanghuid, "1");
+        Observable<BaseBean<ShopCommentBean>> shanghuFuwuList = api.getShanghuPinglun(BSConstant.SHOP_COMMENT, shanghuid, "1");
         shanghuFuwuList.subscribeOn(Schedulers.io())
                        .observeOn(AndroidSchedulers.mainThread())
-                       .subscribe(new Action1<BaseBean<ShanghuPinglunBean>>() {
+                       .subscribe(new Action1<BaseBean<ShopCommentBean>>() {
                            @Override
-                           public void call(BaseBean<ShanghuPinglunBean> bean) {
+                           public void call(BaseBean<ShopCommentBean> bean) {
                                EventBus.getDefault().post(bean);
                            }
                        });

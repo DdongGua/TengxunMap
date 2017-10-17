@@ -13,6 +13,7 @@ import com.example.tengxunmap.model.bean.ShanghuFuwuListBean;
 import com.example.tengxunmap.model.bean.ShanghuFuwuyuangongBean;
 import com.example.tengxunmap.model.bean.ShanghuPinglunBean;
 import com.example.tengxunmap.model.bean.ShanghuUpDetailsBean;
+import com.example.tengxunmap.model.bean.ShopCommentBean;
 import com.example.tengxunmap.model.bean.TuijianShopBean;
 
 import retrofit2.http.Field;
@@ -165,7 +166,7 @@ public interface API {
      * @return
      */
     @GET(Constant.SHOP)
-    Observable<BaseBean<ShanghuPinglunBean>> getShanghuPinglun(
+    Observable<BaseBean<ShopCommentBean>> getShanghuPinglun(
                    @Query("bs") String bs,
                    @Query("shanghuid") String shanghuid,
                    @Query("page") String page

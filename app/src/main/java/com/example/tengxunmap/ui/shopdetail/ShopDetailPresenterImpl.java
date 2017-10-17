@@ -30,7 +30,5 @@ public class ShopDetailPresenterImpl implements ShopDetailContract.presenter {
     @Override
     public void getShopBelowDetail(String shanghuid) {
         HttpHelper.getInstance().getShanghuFuwu(shanghuid);
-        HttpHelper.getInstance().getShanghuFuwuyuangong(shanghuid);
-        HttpHelper.getInstance().getShanghuPinglun(shanghuid);
     }
 }
